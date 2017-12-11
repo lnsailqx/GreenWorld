@@ -1,4 +1,4 @@
-function underline(index){
+﻿function underline(index){
 	var lead=$(".lead")[index||0],
 		left=lead.offsetLeft,
 		width=lead.offsetWidth;
@@ -152,4 +152,5 @@ function user(data){
 
 function data(fn){
 	fn.call($.htmlDATA());
+//fgyhfghfg
 }
