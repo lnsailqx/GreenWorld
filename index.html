@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>the Green World</title>
+		<link rel="shortcut icon" type="image/x-icon" href="img/logo.ico" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+
+	<body>
+		<div class="main">
+			<div id="sliders" class="sliders">
+				<div class="slider">
+					<img src="img/slider1.jpg" />
+				</div>
+				<div class="slider">
+					<img src="img/slider2.jpg" />
+				</div>
+				<div class="slider">
+					<img src="img/slider3.jpg" />
+				</div>
+				<div class="slider">
+					<img src="img/slider4.jpg" />
+				</div>
+				<div class="slider">
+					<img src="img/slider5.jpg" />
+					<a href="html/shouye.html" class="enter">进入</a>
+					<a href="#" class="loginit">登录</a>
+					<a href="#" class="register">注册</a>
+				</div>
+				<ul id="page">
+					<li class="liActived"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div id="shadow" class="shadow"></div>
+		</div>
+		<script type="text/javascript">
+			// 滑轮事件处理
+			function mouseweel(event) {
+				event = event || window.event;
+				if (event.wheelDelta > 0 && sliderTop < 0) {
+					change(sliderTop + 100);
+				} else if (event.wheelDelta < 0 && sliderTop > -400) {
+					change(sliderTop - 100);
+				}
+			}
+			// 轮播动画
+			function change(target) {
+				shadow.style.display = "block";
+				lis[-sliderTop / 100].className = "";
+				lis[-target / 100].className = "liActived";
+				var timer = setInterval(function() {
+					var speed = (target - sliderTop) / 16;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					sliderTop += speed;
+					sliders.style.top = sliderTop + "%";
+					if (sliderTop == target) {
+						clearInterval(timer);
+						shadow.style.display = "none";
+					}
+				}, 20);
+			}
+			// 初始化
+			var sliders = document.getElementById("sliders"),
+				shadow = document.getElementById("shadow"),
+				lis = sliders.getElementsByTagName("li");
+			sliderTop = 0;
+			// 监听兼容IE、Chrome、FireFox的滚轮事件
+			if (sliders.onmousewheel === null) {
+				sliders.onmousewheel = mouseweel;
+			} else {
+				sliders.addEventListener("DOMMouseScroll", function(event) {
+					mouseweel({
+						wheelDelta: -event.detail
+					});
+				});
+			}
+			// 监听点选按键的点击事件
+			for (var i = lis.length - 1; i >= 0; i--) {
+				(function(i) {
+					lis[i].onclick = function() {
+						change(-i * 100);
+					}
+				})(i);
+			}
+		</script>
+	</body>
+
+</html>

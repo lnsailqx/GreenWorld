@@ -1,0 +1,134 @@
+.content {
+	background: url(../img/bg1.jpg) repeat;
+	background-size: 100%;
+	padding-top:130px;
+	padding-bottom:80px;
+}
+
+.content .box{
+	width:960px;
+	margin:0px auto;
+}
+
+.content .topic{
+	width:100%;
+	height:180px;
+	background-color: white;
+	margin-bottom:50px;
+}
+
+.content .topic .topicimg{
+	width:160px;
+	height:160px;
+	background-color: #d2d2d2;
+	border:10px solid white;
+	margin-left:30px;
+	margin-right:20px;
+	position: relative;
+	top:-50px;
+	float:left;
+}
+
+.content .topic .introduce{
+	padding-top:30px;
+	color:#8d8d8d;
+}
+
+.content .tips{
+	overflow: hidden;
+}
+
+.content .tips .topicbox{
+	width:229px;
+	padding:18px;
+	background-color: white;
+	float: left;
+	text-align: center;
+}
+
+.content .topicbox .topicimg{
+	width:100%;
+	height:350px;
+	background-color: #d2d2d2;
+	border:1px solid black;
+	position: relative;
+}
+
+.content .topicimg .yulan{
+	width:100%;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.content .topicimg #file{
+	width:100%;
+	height:100%;
+	opacity:0;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.content .topicimg p{
+	display:block;
+	color:#7c7c7c;
+	margin:0px auto;
+	text-align: center;
+	font-size: 20px;
+	position: relative;
+	top:50%;
+	margin-top:-9px;
+	z-index: 0;
+}
+
+.content .topicbox .upload{
+	width:150px;
+	height:40px;
+	line-height: 40px;
+	margin:0px auto;
+	margin-top:20px;
+	text-align:center;
+	background-color: #65dda9;
+	color:white;
+	font-size: 20px;
+	cursor: pointer;
+	border:none;
+	outline: none;
+}
+
+.information{
+	width:229px;
+	background-color: white;
+	padding:18px;
+	margin-top:25px;
+	float: left;
+}
+
+.information table{
+	width:100%;
+}
+
+.information td{
+	height: 40px;
+}
+
+.information select,.information input{
+	width:150px;
+	margin-left:10px;
+	outline: none;
+	border:1px solid #848484;
+	height: 25px;
+}
+
+.information input{
+	width:148px;
+	height: 23px;
+}
+
+.contentbox{
+	width:670px;
+	height:1000px;
+	float:right;
+	background-color: white;
+}

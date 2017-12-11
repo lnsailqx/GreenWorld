@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>the Green World</title>
+		<link rel="shortcut icon" type="image/x-icon" href="../img/logo.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/same.css"/>
+		<link rel="stylesheet" href="../css/editor.css" />
+		<link rel="stylesheet" type="text/css" href="../editor/themes/simple/simple.css"/>
+		<script src="../js/ben.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/same.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="leader">
+				<div class="box">
+					<a href="shouye.html" class="shouye"><img src="../img/logo.png"/></a>
+					<ul>
+						<li><a href="shouye.html" class="shouye lead">首页</a></li>
+						<li><a href="bankuai.html" class="lead">发现</a></li>
+						<li><a class="name lead login" id="login">登录</a></li>
+						<li><a class="lead login" id="register">注册</a></li>
+					</ul>
+					<div class="underline" id="underline"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<form enctype="multipart/form-data" class="box" name="upform" method="post" action="../php/goodupload.php">
+				<div class="topic">
+					<div class="topicimg"></div>
+					<div class="introduce">
+						<h1 class="name">名称</h1>
+						<p>简介</p>
+					</div>
+				</div>
+				<div class="tips" id="tips">
+					<div class="topicbox">
+						<div class="topicimg" id="topicimg">
+							<p>上传封面图</p>
+							<img src="" alt="" class="yulan" id="yulan" />
+							<input type="file" name="upfile" id="file" value="" />
+						</div>
+						<input type="submit" class="upload" value="上传"/>
+					</div>
+					<div class="contentbox">
+						<textarea id="editor_id" name="content"></textarea>
+					</div>
+					<div class="information">
+						<table class="type">
+							<tr>
+								<td>类型：</td>
+								<td>
+									<select name="type">
+										<option value="1">自然/生态/公园/森林</option>
+										<option value="2">绿化/设计/建筑/盆栽</option>
+										<option value="3">周边/杂物/饰品/食物</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>标题：</td>
+								<td><input type="text" name="title" id="" value="" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="footer">
+			<div class="box">
+				<ul>
+					<li>
+						<h1>关于我们</h1>
+						<p>
+							绿之家，提供一个平台，给予绿色爱好者分享他们的绿色生活，无论是漫步遇见绿林，到家中心爱盆栽，在这里，都可以分享给小伙伴们，用最简洁，为生活添点绿色。
+						</p>
+					</li>
+					<li class="li1">
+						<h1>我们的团队</h1>
+						<ol>
+							<li>黎国本</li>
+							<li>李纳生</li>
+							<li>关智彬</li>
+						</ol>
+					</li>
+					<li class="li2">
+						<h1>返回</h1>
+						<a href="../index.html">轮播图</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			hasLogin(function(){
+				location="shouye.html";
+			},user);
+			underline(2);
+			$("#file").change(function(){
+				if(this.files&&this.files[0]){
+					if(window.URL.createObjectURL){
+						$("#yulan")[0].src=window.URL.createObjectURL(this.files[0]);
+					}else{
+						$("#yulan")[0].src=this.files[0].getAsDataURL();
+					}
+				}else{
+					
+				}
+				setTimeout(function(){
+					$("#topicimg").css({
+						height:$("#yulan").height()
+					});
+				},100);
+			});
+		</script>
+		<script charset="utf-8" src="../editor/kindeditor-all-min.js"></script>
+		<script charset="utf-8" src="../editor/lang/zh-CN.js"></script>
+		<script>
+			KindEditor.options.filterMode = false;
+			KindEditor.ready(function(K) {
+				window.editor = K.create('#editor_id',{
+					width:"668px",
+					height:"992px",
+					resizeType:0,
+					themeType:"simple"
+				});
+			});
+		</script>
+	</body>
+</html>

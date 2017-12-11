@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>the Green World</title>
+		<link rel="shortcut icon" type="image/x-icon" href="../img/logo.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/same.css"/>
+		<link rel="stylesheet" href="../css/article.css" />
+		<script src="../js/ben.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/same.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="leader">
+				<div class="box">
+					<a href="shouye.html" class="shouye"><img src="../img/logo.png"/></a>
+					<ul>
+						<li><a href="shouye.html" class="shouye lead">首页</a></li>
+						<li><a href="bankuai.html" class="lead">发现</a></li>
+						<li><a class="name lead login" id="login">登录</a></li>
+						<li><a class="lead login" id="register">注册</a></li>
+					</ul>
+					<div class="underline" id="underline"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="box">
+				<div class="left">
+					<div class="author" id="author">
+						<img src="" alt="" id="imgloc" />
+						<p>作者：<span id="usernames"></span></p>
+					</div>
+					<div class="comment" id="comment">
+						<div class="commenttitle">评论</div>
+						<div class="commentline"></div>
+						<div class="createComments comments">
+							<img id="userlogo"/>
+							<h1>用户名</h1>
+							<textarea name="" rows="" cols="" id="textarea"></textarea>
+							<input type="button" value="评论" id="commentupload"/>
+						</div>
+					</div>
+				</div>
+				<div class="right">
+					<div class="type">
+						<p id="type">自然/生态/公园/森林</p>
+						<div class="dianzan">
+							<img src="../img/web_heart_animation.png" id="dianzan"/>
+						</div>
+						<div class="zan" id="goodcount">00</div>
+					</div>
+					<div class="article">
+						<h1 class="date" id="createtime">2000-01-01 00:00:00</h1>
+						<h2 class="title" id="title">文章标题</h2>
+						<div class="clickingrate">阅读量:<span id="clickingrate">0</span></div>
+						<p id="content">内容</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="box">
+				<ul>
+					<li>
+						<h1>关于我们</h1>
+						<p>
+							绿之家，提供一个平台，给予绿色爱好者分享他们的绿色生活，无论是漫步遇见绿林，到家中心爱盆栽，在这里，都可以分享给小伙伴们，用最简洁，为生活添点绿色。
+						</p>
+					</li>
+					<li class="li1">
+						<h1>我们的团队</h1>
+						<ol>
+							<li>黎国本</li>
+							<li>李纳生</li>
+							<li>关智彬</li>
+						</ol>
+					</li>
+					<li class="li2">
+						<h1>返回</h1>
+						<a href="../index.html">轮播图</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="back boxlogin boxclose"></div>
+		<div class="boxlogin loginbox">
+			<div class="close boxclose">×</div>
+			<div class="boxlogo">
+				<img src="../img/logo.png"/>绿之声
+			</div>
+			<div class="lineheight">
+				<div class="line"></div>
+				<div class="linename" id="name">登录</div>
+			</div>
+			<div class="form" id="form">
+				<input type="text" maxlength="18" class="input shuru" id="username" placeholder="用户名"/><br />
+				<input type="password" maxlength="18" class="input shuru" id="password" placeholder="密码"/><br />
+				<div class="input inputbox">
+					<input type="text" maxlength="4" class="vaild shuru" id="value" placeholder="验证码"/>
+					<img src="../php/captcha.php" id="vaild" title="看不清？点击更换验证码"/>
+				</div>
+				<input type="button" class="submit input" id="validate" value="登录"/>
+			</div>
+		</div>
+		<script type="text/javascript">
+			hasLogin(logregis,function(data){
+				user(data);
+				$("#userlogo")[0].src="../images/"+data.headlogo;
+			});
+			underline(2);
+			var topicid=$.htmlDATA().topicid;
+			var haszan=false;
+			if(!topicid)location="shouye.html";
+			$("#dianzan").click(function(){
+				var callee=arguments.callee;
+				var i=0;
+				$(this).re("click",callee);
+				$.ajax({
+					method:"post",
+					url:"../php/goodcount.php",
+					data:{
+						topicid:topicid
+					},
+					success:function(data){
+						console.log(data);
+						if(parseInt(data)<10)data="0"+data;
+						$("#goodcount").innerHTML(data);
+						if(haszan){
+							$("#dianzan").css({marginLeft:0}).re("click",arguments.callee).click(callee);
+							haszan=false;
+						}else{
+							setTimeout(function(){
+								i++;
+								$("#dianzan").css("marginLeft",-70*i);
+								if(i<28){
+									setTimeout(arguments.callee,30)
+								}else{
+									$("#dianzan").click(callee);
+								}
+							},30);
+							haszan=true;
+						}
+					}
+				});
+			});
+			$.ajax({
+				url:"../php/searchTopic.php",
+				data:{
+					topicid:topicid
+				},
+				success:function(data){
+					data=$.parseJSON(data);
+					var type;
+					switch(data.type){
+						case "1":
+							type="自然/生态/公园/森林";
+							break;
+						case "2":
+							type="绿化/设计/建筑/盆栽";
+							break;
+						case "3":
+							type="周边/杂物/饰品/食物";
+							break;
+						default:
+							break;
+					}
+					if(parseInt(data.goodcount)<10)data.goodcount="0"+data.goodcount;
+					$("#type").innerHTML(type);
+					$("#goodcount").innerHTML(data.goodcount);
+					$("#createtime").innerHTML(data.createtime);
+					$("#title").innerHTML(data.title);
+					$("#content").innerHTML(data.content);
+					$("#clickingrate").innerHTML(data.clickingrate);
+					$("#usernames").innerHTML(data.username);
+					$("#imgloc")[0].src="../images/"+data.imgloc;
+				}
+			});
+			$.ajax({
+				url:"../php/searchReply.php",
+				data:{
+					topicid:topicid
+				},
+				success:function(data){
+					data=$.parseJSON(data);
+					var comments=$([]);
+					$(data).each(function(){
+						comments.add("<.comments>(img[src=../images/"+this.headlogo+"]+h1{"+this.username+"}+h2{"+this.createtime+"}+p{"+this.content+"})>");
+					});
+					comments.appendTo("#comment");
+				}
+			});
+			$("#commentupload").click(function(){
+				$.ajax({
+					method:"post",
+					url:"../php/comment.php",
+					data:{
+						topicid:topicid,
+						content:$("#textarea").value()
+					},
+					success:function(data){
+						if(data=="success"){
+							location=location;
+						}
+					}
+				});
+			});
+			$.ajax({
+				url:"../php/getGoodcount.php",
+				data:{
+					topicid:topicid
+				},
+				success:function(data){
+					if(data=='true'){
+						$("#dianzan").css("marginLeft",-1960);
+						haszan=true;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+.content {
+	background: url(../img/backgroundImage1.jpg) repeat;
+	background-size: cover;
+	padding-top: 5%;
+}
+
+.content .box {
+	width: 960px;
+	height: 1370px;
+	margin: 0px auto;
+	position: relative;
+}
+
+.content .box div {
+	width: 840px;
+	height:445px;
+	position: absolute;
+}
+
+.content .box .imgbox1{
+	top:0px
+}
+
+.content .box .imgbox2{
+	top:420px;
+}
+
+.content .box .imgbox3{
+	top:840px;
+}
+
+.content .box .left{
+	left:0px;
+}
+
+.content .box .right{
+	right:0px;
+}
+
+.content .box img{
+	position: absolute;
+	width:525px;
+}
+
+.content .left .img1{
+	top:0px;
+	left:0px;
+}
+
+.content .right .img1{
+	top: 0px;
+	right: 0px;
+}
+
+.content .left .img11{
+	top:140px;
+	left:315px;
+}
+
+.content .right .img11{
+	top:140px;
+	right:315px;
+}
+
+.content .box .kong1{
+	position:absolute;
+	width:525px;
+	height:40px;
+	background-color: white;
+	bottom: 0px;
+}
+
+.content .left .kong1{
+	left:315px;
+}
+
+.content .right .kong1{
+	right:315px;
+}

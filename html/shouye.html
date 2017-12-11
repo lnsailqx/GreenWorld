@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>the Green World</title>
+		<link rel="shortcut icon" type="image/x-icon" href="../img/logo.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/same.css"/>
+		<link rel="stylesheet" href="../css/shouye.css" />
+		<script src="../js/ben.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="img">
+				<img src="../img/backgroundImage.jpg" alt="" />
+				<div class="imgslider"></div>
+			</div>
+			<div class="leader">
+				<div class="box">
+					<a href="shouye.html" class="shouye"><img src="../img/logo.png"/></a>
+					<ul>
+						<li><a href="shouye.html" class="shouye lead">首页</a></li>
+						<li><a href="bankuai.html" class="lead">发现</a></li>
+						<li><a class="name lead login" id="login">登录</a></li>
+						<li><a class="lead login" id="register">注册</a></li>
+					</ul>
+					<div class="underline" id="underline"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="box">
+				<div class="imgbox1 left">
+					<a href="bankuai.html?id=1"><img src="../img/img11.jpg" class="img11"/></a>
+					<a href="bankuai.html?id=1"><img src="../img/img1.jpg" class="img1"/></a>
+					<a href="bankuai.html?id=1"><div class="kong1"></div></a>
+				</div>
+				<div class="imgbox2 right">
+					<a href="bankuai.html?id=2"><img src="../img/img22.jpg" class="img11"/></a>
+					<a href="bankuai.html?id=2"><img src="../img/img2.jpg" class="img1"/></a>
+					<a href="bankuai.html?id=2"><div class="kong1"></div></a>
+				</div>
+				<div class="imgbox3 left">
+					<a href="bankuai.html?id=3"><img src="../img/img33.jpg" class="img11"/></a>
+					<a href="bankuai.html?id=3"><img src="../img/img3.jpg" class="img1"/></a>
+					<a href="bankuai.html?id=3"><div class="kong1"></div></a>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="box">
+				<ul>
+					<li>
+						<h1>关于我们</h1>
+						<p>
+							绿之家，提供一个平台，给予绿色爱好者分享他们的绿色生活，无论是漫步遇见绿林，到家中心爱盆栽，在这里，都可以分享给小伙伴们，用最简洁，为生活添点绿色。
+						</p>
+					</li>
+					<li class="li1">
+						<h1>我们的团队</h1>
+						<ol>
+							<li>黎国本</li>
+							<li>李纳生</li>
+							<li>关智彬</li>
+						</ol>
+					</li>
+					<li class="li2">
+						<h1>返回</h1>
+						<a href="../index.html">轮播图</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="back boxlogin boxclose"></div>
+		<div class="boxlogin loginbox">
+			<div class="close boxclose">×</div>
+			<div class="boxlogo">
+				<img src="../img/logo.png"/>绿之声
+			</div>
+			<div class="lineheight">
+				<div class="line"></div>
+				<div class="linename" id="name">登录</div>
+			</div>
+			<div class="form" id="form">
+				<input type="text" maxlength="18" class="input shuru" id="username" placeholder="用户名"/><br />
+				<input type="password" maxlength="18" class="input shuru" id="password" placeholder="密码"/><br />
+				<div class="input inputbox">
+					<input type="text" maxlength="4" class="vaild shuru" id="value" placeholder="验证码"/>
+					<img src="../php/captcha.php" id="vaild" title="看不清？点击更换验证码"/>
+				</div>
+				<input type="button" class="submit input" id="validate" value="登录"/>
+			</div>
+		</div>
+		<script src="../js/same.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			hasLogin(logregis,user);
+			underline();
+		</script>
+	</body>
+</html>
